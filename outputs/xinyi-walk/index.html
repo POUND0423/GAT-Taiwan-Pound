@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>信義漫遊 · XINYI</title>
+<link rel="stylesheet" href="style.css">
+<script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
+</head>
+<body>
+<main id="viewport" aria-label="信義區互動 3D 城市"></main>
+<header class="masthead"><div class="brand"><span class="wordmark">XINYI<span class="brand-dot">.</span></span><div class="brand-copy"><h1>信義漫遊</h1><p>TAIPEI · 25.033° N / 121.565° E</p></div></div><button id="helpToggle" class="icon-button" aria-label="顯示操作說明">?</button></header>
+<nav class="view-switch" aria-label="視角切換"><button id="bird" class="selected" aria-pressed="true"><span>◉</span> 城市鳥瞰</button><button id="walk" aria-pressed="false"><span>⌁</span> 街道漫遊</button><button id="landmark"><span>⌖</span> 台北 101</button></nav>
+<aside class="environment"><div class="eyebrow">光線與時間</div><div class="sun-line"><span id="timeLabel">14:00</span><span id="lightLabel">午後日光</span></div><input id="time" type="range" min="7" max="18" value="14" step="0.25" aria-label="日照時間"><div class="range-labels"><span>07:00</span><span>18:00</span></div><label class="shadow-option"><input id="shadows" type="checkbox" checked> 建築陰影</label></aside>
+<aside class="location"><div class="location-top"><span id="modeLabel">城市鳥瞰</span><span class="north">N ↑</span></div><canvas id="minimap" width="260" height="160" aria-label="目前位置小地圖"></canvas><div class="location-bottom"><span id="position">視角準備中</span><span id="fps">—</span></div></aside>
+<div id="crosshair" aria-hidden="true"></div>
+<section id="walkPrompt" class="walk-prompt" hidden><div class="eyebrow">從街道看見城市</div><h2>開始走走</h2><p>點擊下方按鈕，滑鼠轉頭、WASD 行走。<br>按 Esc 放開滑鼠。</p><button id="enterWalk" class="primary">進入漫遊 <span>→</span></button><small>若無法鎖定滑鼠，可按住畫面拖曳轉頭。</small></section>
+<section id="help" class="help" hidden><div class="help-heading"><h2>怎麼探索？</h2><button id="closeHelp" class="icon-button" aria-label="關閉說明">×</button></div><dl><dt>城市鳥瞰</dt><dd>拖曳旋轉 · 滾輪縮放 · 右鍵平移</dd><dt>街道漫遊</dt><dd>WASD / 方向鍵行走 · 滑鼠轉頭<br>Shift 加速 · Esc 放開滑鼠</dd><dt>台北 101</dt><dd>跳到 101 南側街道的觀景位置</dd></dl><p>建築外觀為材質化示意，部分高度為估算；示意地表為平面。道路依 OSM 中心線繪製，寬度及標線為示意。</p></section>
+<div id="toast" class="toast" role="status"></div>
+<div id="touchControls" class="touch-controls"><button data-move="KeyW" aria-label="向前">↑</button><div><button data-move="KeyA" aria-label="向左">←</button><button data-move="KeyS" aria-label="向後">↓</button><button data-move="KeyD" aria-label="向右">→</button></div></div>
+<footer><div class="controls-hint" id="hint"><span class="hint-dot"></span> 拖曳旋轉 <b>·</b> 滾輪縮放 <b>·</b> 切換街道開始步行</div><div class="credits"><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap contributors</a> · <a href="https://opendatacommons.org/licenses/odbl/1-0/" target="_blank" rel="noopener">ODbL</a> · 示意地圖與自產材質</div></footer>
+<div id="loading" class="loading"><div class="loading-mark">XINYI.</div><p id="loadText">正在載入城市與材質…</p><div class="loading-track"><i></i></div><small>信義區 · OSM 示意地圖與立體街廓</small></div>
+<script type="module" src="app.js"></script>
+</body></html>
